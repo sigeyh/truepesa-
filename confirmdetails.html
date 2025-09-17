@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirm Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-yellow-500 via-yellow-200 to-white min-h-screen flex items-center justify-center p-4 text-black">
+
+  <div class="w-full max-w-md bg-white/60 backdrop-blur-lg border border-yellow-300 rounded-2xl shadow-2xl p-6">
+    <h1 class="text-2xl font-bold text-center text-yellow-900 mb-4">Confirm Your Details</h1>
+
+    <div class="space-y-3 text-sm">
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Last Name:</span> <span id="lastname">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">First Name:</span> <span id="firstname">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Phone Number:</span> <span id="phone">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">ID Number:</span> <span id="idnumber">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Email:</span> <span id="email">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Location:</span> <span id="location">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Date of Birth:</span> <span id="dob">Loading...</span></div>
+    </div>
+
+    <button onclick="confirmDetails()"
+      class="w-full mt-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg transition duration-300 shadow-md">
+      Confirm
+    </button>
+  </div>
+
+  <script>
+    document.getElementById('lastname').textContent = localStorage.getItem('lastname') || 'Not provided';
+    document.getElementById('firstname').textContent = localStorage.getItem('firstname') || 'Not provided';
+    document.getElementById('phone').textContent = localStorage.getItem('phone') || 'Not provided';
+    document.getElementById('idnumber').textContent = localStorage.getItem('idnumber') || 'Not provided';
+    document.getElementById('email').textContent = localStorage.getItem('email') || 'Not provided';
+    document.getElementById('location').textContent = localStorage.getItem('location') || 'Not provided';
+    document.getElementById('dob').textContent = localStorage.getItem('dob') || 'Not provided';
+
+    function confirmDetails() {
+      window.location.href = 'otherdetails.html';
+    }
+  </script>
+</body>
+</html>

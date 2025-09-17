@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Referral Application</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-yellow-500 via-yellow-200 to-white min-h-screen flex items-center justify-center p-4">
+
+  <div class="w-full max-w-2xl bg-white/70 backdrop-blur-xl border border-yellow-300 shadow-xl rounded-2xl p-6 text-black">
+    <h1 class="text-2xl font-bold text-center text-yellow-900 mb-6">Referral Application</h1>
+
+    <form id="referralForm" class="space-y-6">
+
+      <section>
+        <h2 class="text-lg font-semibold text-yellow-800 border-b-2 border-yellow-500 pb-1 mb-4">Financial & Educational Info</h2>
+
+        <label class="block mb-2 font-medium">Level of Education:</label>
+        <select id="education" name="education" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          <option value="">-- Select Education Level --</option>
+          <option value="primary">Primary</option>
+          <option value="secondary">Secondary</option>
+          <option value="diploma">Diploma</option>
+          <option value="bachelor">Bachelor's Degree</option>
+          <option value="master">Master's Degree</option>
+          <option value="phd">PhD</option>
+        </select>
+
+        <label class="block mt-4 mb-2 font-medium">Employment Status:</label>
+        <select id="employment" name="employment" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          <option value="">-- Select Employment Status --</option>
+          <option value="employed">Employed</option>
+          <option value="self-employed">Self-employed</option>
+          <option value="unemployed">Unemployed</option>
+          <option value="student">Student</option>
+          <option value="retired">Retired</option>
+        </select>
+
+        <label class="block mt-4 mb-2 font-medium">Monthly Income:</label>
+        <input type="number" id="monthlyIncome" name="monthlyIncome" required placeholder="e.g. 25000"
+          class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+
+        <label class="block mt-4 mb-2 font-medium">Loan Purpose:</label>
+        <select id="loanPurpose" name="loanPurpose" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          <option value="">-- Select type of Loan --</option>
+          <option value="personal">Personal Loan</option>
+          <option value="business">Business Loan</option>
+          <option value="medical">Medical Loan</option>
+          <option value="emergency">Emergency Loan</option>
+          <option value="car">Car Financing Loan</option>
+        </select>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-yellow-800 border-b-2 border-yellow-500 pb-1 mb-4">Referral Contact Details</h2>
+
+        <label class="block mb-2 font-medium">Referral Name:</label>
+        <input type="text" id="referralName" name="referralName" required placeholder="e.g. John Doe"
+          class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+
+        <label class="block mt-4 mb-2 font-medium">Referral Phone:</label>
+        <input type="tel" id="referralPhone" name="referralPhone" required placeholder="e.g. 0712345678"
+          class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+
+        <label class="block mt-4 mb-2 font-medium">Relationship:</label>
+        <input type="text" id="relationship" name="relationship" required placeholder="e.g. Friend"
+          class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400" /> 
+      </section>
+
+      <button type="button" id="submitButton"
+        class="w-full mt-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg transition duration-300 shadow-md">
+        Submit Referral
+      </button>
+    </form>
+
+    <footer class="text-center text-gray-600 text-sm mt-6">&copy; 2025 True Pesa</footer>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 hidden items-center justify-center z-50">
+    <img src="pro.gif" alt="Loading..." class="w-20 h-20">
+  </div>
+
+  <script>
+    document.getElementById("submitButton").addEventListener("click", function () {
+      const form = document.getElementById("referralForm");
+      const overlay = document.getElementById("overlay");
+      const inputs = form.querySelectorAll("input[required], select[required]");
+      let isValid = true;
+
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          isValid = false;
+          input.classList.add("border-red-500");
+        } else {
+          input.classList.remove("border-red-500");
+        }
+      });
+
+      if (!isValid) {
+        alert("Please fill in all required fields before proceeding.");
+        return;
+      }
+
+      overlay.classList.remove("hidden");
+      overlay.classList.add("flex");
+
+      setTimeout(() => {
+        window.location.href = "checklimit.html";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
